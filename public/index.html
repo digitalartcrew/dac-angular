@@ -7,15 +7,15 @@
 	
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-	<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
+                  
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 	
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="css/nav.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     
@@ -62,7 +62,88 @@
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
 
+    <section>
+  <!--   <h2 class="w3-center">Automatic Slideshow</h2> -->
+
+<div class="w3-content w3-section" style="max-width:100%">
+  <img class="mySlides" src="img/test-1.jpg" style="width:100%">
+  <img class="mySlides" src="img/test-2.jpg" style="width:100%">
+  <img class="mySlides" src="img/test-3.jpg" style="width:100%">
+</div>
+    	
+    </section>
+
+    <section>
+    	<div class="container">
+<div class="row">
+   <!--  <h1>Article Thumbnails</h1>
+    <p>Use it to your news site, feature a article.</p> -->
+</div>
+    <div class="row">
+		<div class="col-md-5 col-lg-5">
+			<!-- artigo em destaque -->
+			<div class="featured-article">
+				<a href="#">
+					<img src="http://placehold.it/482x350" alt="" class="thumb">
+				</a>
+				<div class="block-title">
+					<h2>Lorem ipsum dolor asit amet</h2>
+					<p class="by-author"><small>By Jhon Doe</small></p>
+				</div>
+			</div>
+			<!-- /.featured-article -->
+		</div>
+		<div class="col-md-7 col-lg-7">
+			<ul class="media-list main-list">
+			  <li class="media">
+			    <a class="pull-left" href="#">
+			      <img class="media-object" src="http://placehold.it/150x90" alt="...">
+			    </a>
+			    <div class="media-body">
+			      <h4 class="media-heading">Lorem ipsum dolor asit amet</h4>
+			      <p class="by-author">By Jhon Doe</p>
+			    </div>
+			  </li>
+			  <li class="media">
+			    <a class="pull-left" href="#">
+			      <img class="media-object" src="http://placehold.it/150x90" alt="...">
+			    </a>
+			    <div class="media-body">
+			      <h4 class="media-heading">Lorem ipsum dolor asit amet</h4>
+			      <p class="by-author">By Jhon Doe</p>
+			    </div>
+			  </li>
+			  <li class="media">
+			    <a class="pull-left" href="#">
+			      <img class="media-object" src="http://placehold.it/150x90" alt="...">
+			    </a>
+			    <div class="media-body">
+			      <h4 class="media-heading">Lorem ipsum dolor asit amet</h4>
+			      <p class="by-author">By Jhon Doe</p>
+			    </div>
+			  </li>
+			</ul>
+		</div>
+	</div>
+    </section>
+
     <!-- scripts -->
+    <script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
 
 </body>
 </html>
