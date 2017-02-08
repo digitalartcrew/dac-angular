@@ -1,4 +1,4 @@
-var app = angular.module('dacApp', ['ngAnimate','ui.router','ui.bootstrap','ngResource','ngCookies']);
+var app = angular.module('dacApp', ['ngAnimate','ui.router','ngResource','ngCookies']);
 
 app.config(function($stateProvider,$urlRouterProvider) {  
   $stateProvider

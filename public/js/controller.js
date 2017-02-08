@@ -1,5 +1,4 @@
 app.controller("NavCtrl", function($rootScope, $scope, $http, $location, $state) {
-  
   $scope.logout = function() {
     $http.post("/logout")
       .success(function() {
@@ -10,7 +9,7 @@ app.controller("NavCtrl", function($rootScope, $scope, $http, $location, $state)
 });
 
 
-app.controller("FormCtrl", function($rootScope, $scope, $http, $location, $state, $uibModal, $log) {
+app.controller("FormCtrl", function($rootScope, $scope, $http, $location, $state, $log) {
 
 
 });

@@ -12,14 +12,14 @@ var passport = require('passport');
 require('./config/passport')(passport); //passport configuration
 
 //Cookie and Session
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-app.use(session({
-	secret: 'awesome',
-	resave: true,
-    saveUninitialized: true
-}));
-app.use(cookieParser());
+// var cookieParser = require('cookie-parser');
+// var session = require('express-session');
+// app.use(session({
+// 	secret: 'awesome',
+// 	resave: true,
+//     saveUninitialized: true
+// }));
+// app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
