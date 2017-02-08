@@ -60,7 +60,7 @@ app.controller("SignUpCtrl", function($scope, $http, $rootScope, $location, $sta
     $http.post('/signup', user)
     .success(function(user) {
       $rootScope.currentUser = user;
-      $state.go('form.map');
+      $state.go('form.main');
     });
   }
 };
@@ -73,7 +73,7 @@ $scope.login = function(user) {
     $http.post('/login', user)
       .success(function(response) {
         $rootScope.currentUser = response;
-        $state.go('form.map');
+        $state.go('form.main');
       });
   };
 

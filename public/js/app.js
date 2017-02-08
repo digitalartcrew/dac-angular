@@ -74,21 +74,21 @@ app.config(function($stateProvider,$urlRouterProvider) {
     controller: 'ContestCtrl'
   })
   
-  $urlRouterProvider.otherwise('form.main');
+  $urlRouterProvider.otherwise('login');
 });
 
-// app.run(['$rootScope', 'Auth', function ($rootScope, Auth) {
-//   $rootScope.$on('$routeChangeStart', function (event) {
+app.run(['$rootScope', 'Auth', function ($rootScope, Auth) {
+  $rootScope.$on('$routeChangeStart', function (event) {
 
-//     if (!Auth.isLoggedIn()) {
-//       console.log('DENY');
-//       event.preventDefault();
-//       $state.go('login');
-//     }
-//     else {
-//       console.log('ALLOW');
-//       $state.go('for');
-//     }
-//   });
-// }]);
+    if (!Auth.isLoggedIn()) {
+      console.log('DENY');
+      event.preventDefault();
+      $state.go('login');
+    }
+    else {
+      console.log('ALLOW');
+      $state.go('for');
+    }
+  });
+}]);
 
