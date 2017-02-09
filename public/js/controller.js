@@ -1,5 +1,5 @@
 app.controller("NavCtrl", function($rootScope, $scope, $http, $location, $state) {
-  // console.log($rootScope);
+  // console.log($rootScope.currentUser);
   $scope.logout = function() {
     $http.post("/logout")
       .success(function() {
@@ -72,8 +72,10 @@ app.controller("LoginCtrl", function($scope,$http,Auth, $rootScope, $state, $coo
 $scope.login = function(user) {
     $http.post('/login', user)
       .success(function(response) {
-        $rootScope.currentUser = response;
-        $state.go('form.main',response);
+        // console.log($rootScope.currentUser);
+        $rootScope.currentUser = response.username;
+        // console.log(response.username);
+        $state.go('form.main');
       });
   };
 
