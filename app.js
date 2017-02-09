@@ -1,9 +1,11 @@
 //Express
 var express = require('express');
-		 	app = express();
-		 	methodOverride = require('method-override'),
-			morgan = require("morgan"),
-			path = require("path");
+app = express();
+methodOverride = require('method-override'),
+morgan = require("morgan"),
+path = require("path"),
+session = require('express-session'),
+MongoDBStore = require('connect-mongodb-session')(session);
 
 app.use(express.static(__dirname + '/public'));
 
@@ -11,15 +13,33 @@ app.use(express.static(__dirname + '/public'));
 var passport = require('passport');
 require('./config/passport')(passport); //passport configuration
 
-//Cookie and Session
-// var cookieParser = require('cookie-parser');
-// var session = require('express-session');
-// app.use(session({
-// 	secret: 'awesome',
-// 	resave: true,
-//     saveUninitialized: true
-// }));
-// app.use(cookieParser());
+
+var store = new MongoDBStore(
+{
+	uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
+	collection: 'mySessions'
+});
+
+    // Catch errors 
+    store.on('error', function(error) {
+    	assert.ifError(error);
+    	assert.ok(false);
+    });
+
+    app.use(require('express-session')({
+    	secret: 'This is a secret',
+    	cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week 
+    },
+    store: store,
+      // Boilerplate options, see: 
+      // * https://www.npmjs.com/package/express-session#resave 
+      // * https://www.npmjs.com/package/express-session#saveuninitialized 
+      resave: true,
+      saveUninitialized: true
+  }));
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 

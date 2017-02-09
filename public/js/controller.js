@@ -1,5 +1,6 @@
-app.controller("NavCtrl", function($rootScope, $scope, $http, $location, $state) {
-  // console.log($rootScope.currentUser);
+app.controller("NavCtrl", function($rootScope, $scope, $http, $location, $state,$localStorage) {
+   console.log($localStorage);
+   $scope.currentUser = $localStorage.currentUser;
   $scope.logout = function() {
     $http.post("/logout")
       .success(function() {
@@ -66,15 +67,17 @@ app.controller("SignUpCtrl", function($scope, $http, $rootScope, $location, $sta
 };
 });
 
-app.controller("LoginCtrl", function($scope,$http,Auth, $rootScope, $state, $cookies) {
+app.controller("LoginCtrl", function($scope,$http,Auth, $rootScope, $state, $localStorage) {
 
   
 $scope.login = function(user) {
     $http.post('/login', user)
       .success(function(response) {
-        // console.log($rootScope.currentUser);
-        $rootScope.currentUser = response.username;
-        // console.log(response.username);
+       
+        $scope.$storage = $localStorage.$default({
+          currentUser: response.username
+        });
+
         $state.go('form.main');
       });
   };
