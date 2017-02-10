@@ -1,12 +1,24 @@
-app.service('Auth', function(){
-var user;
+app.service('Auth', function($state) {
 
-return{
-    setUser : function(aUser){
-        user = aUser;
-    },
-    isLoggedIn : function(){
-        return(user)? user : false;
-    }
+  this.authorized = false;
+  this.memorizedState = null;
+
+  var
+  clear = function() {
+    this.authorized = false;
+    this.memorizedState = null;
+  },
+
+  go = function(fallback) {
+    this.authorized = true;
+    var targetState = this.memorizedState ? this.memorizedState : fallback;
+    $state.go(targetState);
+  };
+
+  return {
+    authorized: this.authorized,
+    memorizedState: this.memorizedState,
+    clear: clear,
+    go: go
   };
 });

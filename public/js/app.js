@@ -5,90 +5,96 @@ app.config(function($stateProvider,$urlRouterProvider) {
   .state('login', {
     url: '/login',
     templateUrl: '/views/login.html',
-    controller: 'LoginCtrl'
+    controller: 'LoginCtrl',
+    authorization: false
   })
 
   .state('signup', {
     url: '/signup',
     templateUrl: 'views/signup.html',
-    controller: 'SignUpCtrl'
+    controller: 'SignUpCtrl',
+    authorization: false
   })
   
   .state('form', {
     url: '/form',
     templateUrl: 'views/form.html',
-    controller: 'FormCtrl'
+    controller: 'FormCtrl',
+    authorization: true
   })
 
   .state('form.main', {
     url: '/',
     templateUrl: 'views/main.html',
-    controller: 'MainCtrl'
+    controller: 'MainCtrl',
+    authorization: true
   })
 
   .state('form.account', {
     url: '/account',
     templateUrl: 'views/account.html',
-    controller: 'AccountCtrl'
+    controller: 'AccountCtrl',
+    authorization: true
   })
 
   .state('form.artists', {
     url: '/artists',
     templateUrl: 'views/artists.html',
-    controller: 'ArtistsCtrl'
+    controller: 'ArtistsCtrl',
+    authorization: true
   })
 
   .state('form.artist-profile', {
     url: '/artists/:id',
     templateUrl: 'views/artist-profile.html',
-    controller: 'ArtistProfileCtrl'
+    controller: 'ArtistProfileCtrl',
+    authorization: true
   })
 
   .state('form.teams', {
     url: '/teams',
     templateUrl: 'views/teams.html',
-    controller: 'TeamsCtrl'
+    controller: 'TeamsCtrl',
+    authorization: true
   })
 
   .state('form.team-profile', {
     url: '/teams:id',
     templateUrl: 'views/team-profile.html',
-    controller: 'TeamProfileCtrl'
+    controller: 'TeamProfileCtrl',
+    authorization: true
   })
 
   .state('form.events', {
     url: '/events',
     templateUrl: 'views/events.html',
-    controller: 'EventCtrl'
+    controller: 'EventCtrl',
+    authorization: true
   })
 
   .state('form.projects', {
     url: '/projects',
     templateUrl: 'views/projects.html',
-    controller: 'ProjectsCtrl'
+    controller: 'ProjectsCtrl',
+    authorization: true
   })
 
   .state('form.contest', {
     url: '/contests',
     templateUrl: 'views/contest.html',
-    controller: 'ContestCtrl'
+    controller: 'ContestCtrl',
+    authorization: true
   })
   
   $urlRouterProvider.otherwise('login');
 });
 
-app.run(['$rootScope', 'Auth', function ($rootScope, Auth) {
-  $rootScope.$on('$routeChangeStart', function (event) {
-
-    if (!Auth.isLoggedIn()) {
-      console.log('DENY');
-      event.preventDefault();
-      $state.go('login');
-    }
-    else {
-      console.log('ALLOW');
-      $state.go('for');
+app.run(function ($rootScope, $state, Auth) {
+  $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+    if (toState.authenticate && !Auth.isAuthenticated()){
+      // User isn’t authenticated
+      $state.transitionTo("login");
+      event.preventDefault(); 
     }
   });
-}]);
-
+});

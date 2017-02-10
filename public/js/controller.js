@@ -1,11 +1,12 @@
-app.controller("NavCtrl", function($rootScope, $scope, $http, $location, $state,$localStorage) {
-   console.log($localStorage);
-   $scope.currentUser = $localStorage.currentUser;
+app.controller("NavCtrl", function($rootScope, $scope, $http, $location, $state,$localStorage, Auth, $window) {
+
+  console.log($localStorage);
+  $scope.currentUser = $localStorage.currentUser;
   $scope.logout = function() {
     $http.post("/logout")
       .success(function() {
-        $rootScope.currentUser = null;
-        $location.url("/login");
+        $window.localStorage.clear();
+        $location.path('login');
       });
   };
 });
@@ -73,11 +74,9 @@ app.controller("LoginCtrl", function($scope,$http,Auth, $rootScope, $state, $loc
 $scope.login = function(user) {
     $http.post('/login', user)
       .success(function(response) {
-       
         $scope.$storage = $localStorage.$default({
           currentUser: response.username
         });
-
         $state.go('form.main');
       });
   };
