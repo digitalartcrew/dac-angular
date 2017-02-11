@@ -16,7 +16,7 @@ require('./config/passport')(passport); //passport configuration
 
 var store = new MongoDBStore(
 {
-	uri: 'mongodb://localhost:27017/connect_mongodb_session_test',
+	uri: process.env.MONGOLAB_URI || 'mongodb://localhost:27017/connect_mongodb_session_test',
 	collection: 'mySessions'
 });
 
