@@ -110,6 +110,15 @@ app.config(function($stateProvider,$urlRouterProvider) {
     }
   })
 
+  .state('form.showcase', {
+    url: '/showcase',
+    templateUrl: 'views/showcase.html',
+    controller: 'ShowcaseCtrl',
+    resolve: {
+      //..
+    }
+  })
+
     .state('form.blog', {
     url: '/blog',
     templateUrl: 'views/blog.html',

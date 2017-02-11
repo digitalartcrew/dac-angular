@@ -51,6 +51,10 @@ app.controller("ContactCtrl", function($rootScope, $scope, $http, $location, $st
   
 });
 
+app.controller("ShowcaseCtrl", function($rootScope, $scope, $http, $location, $state) {
+  
+});
+
 app.controller("BlogCtrl", function($rootScope, $scope, $http, $location, $state) {
   
 });
