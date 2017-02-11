@@ -50,7 +50,7 @@ app.config(function($stateProvider,$urlRouterProvider) {
   .state('form.artists', {
     url: '/artists',
     templateUrl: 'views/artists.html',
-    controller: 'ArtistsCtrl',
+    controller: 'ArtistCtrl',
     resolve: {
       //..
     }
@@ -86,7 +86,7 @@ app.config(function($stateProvider,$urlRouterProvider) {
   .state('form.events', {
     url: '/events',
     templateUrl: 'views/events.html',
-    controller: 'EventCtrl',
+    controller: 'EventsCtrl',
     resolve: {
       //..
     }
@@ -103,8 +103,26 @@ app.config(function($stateProvider,$urlRouterProvider) {
 
   .state('form.contest', {
     url: '/contests',
-    templateUrl: 'views/contest.html',
+    templateUrl: 'views/contests.html',
     controller: 'ContestCtrl',
+    resolve: {
+      //..
+    }
+  })
+
+    .state('form.blog', {
+    url: '/blog',
+    templateUrl: 'views/blog.html',
+    controller: 'BlogCtrl',
+    resolve: {
+      //..
+    }
+  })
+
+   .state('form.contact', {
+    url: '/contact',
+    templateUrl: 'views/contact.html',
+    controller: 'ContactCtrl',
     resolve: {
       //..
     }

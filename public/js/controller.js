@@ -35,7 +35,7 @@ app.controller("ArtistProfileCtrl", function($rootScope, $scope, $http, $locatio
   
 });
 
-app.controller("TeamCtrl", function($rootScope, $scope, $http, $location, $state) {
+app.controller("TeamsCtrl", function($rootScope, $scope, $http, $location, $state) {
   
 });
 
@@ -44,6 +44,14 @@ app.controller("TeamProfileCtrl", function($rootScope, $scope, $http, $location,
 });
 
 app.controller("EventsCtrl", function($rootScope, $scope, $http, $location, $state) {
+  
+});
+
+app.controller("ContactCtrl", function($rootScope, $scope, $http, $location, $state) {
+  
+});
+
+app.controller("BlogCtrl", function($rootScope, $scope, $http, $location, $state) {
   
 });
 
