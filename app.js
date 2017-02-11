@@ -5,7 +5,7 @@ methodOverride = require('method-override'),
 morgan = require("morgan"),
 path = require("path"),
 session = require('express-session'),
-MongoDBStore = require('connect-mongodb-session')(session);
+// MongoDBStore = require('connect-mongodb-session')(session);
 
 app.use(express.static(__dirname + '/public'));
 
