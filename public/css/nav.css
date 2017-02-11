@@ -1,0 +1,32 @@
+.navbar-nav > li > a {
+  	color:#fff;
+  	padding-left:20px;
+  	padding-right:20px;
+  	border-left:1px solid #66BBCC;
+}
+
+
+.navbar-nav > li:last-child > a {
+  	border-right:1px solid #66BBCC;
+}
+
+
+
+.navbar-brand {
+	color:#fff;
+}
+
+
+.dropdown-menu {
+	min-width: 250px;
+}
+
+
+.navbar-toggle {
+	color:#fff;
+  border-width:0;
+}
+  
+.navbar-toggle:hover {
+	background-color:#fff;
+}
