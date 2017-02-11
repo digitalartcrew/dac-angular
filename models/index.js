@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-mongoose.connect(process.env.MONGOLAB_URI || "mongodb://localhost/dac-angular");
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/dac-angular');
 
 mongoose.set("debug", true);
 
