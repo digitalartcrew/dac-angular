@@ -30,6 +30,10 @@ h3.highlight  {
     border-bottom:2px solid #77CCDD;
 }
 
+.fa-globe {
+  margin-left: 5px;
+}
+
 
 .panel,.panel-heading {
     border-radius:0;

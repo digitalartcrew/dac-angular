@@ -4,10 +4,10 @@ app.controller("NavCtrl", function($rootScope, $scope, $http, $location, $state,
   $scope.currentUser = $localStorage.currentUser;
   $scope.logout = function() {
     $http.post("/logout")
-      .success(function() {
-        $window.localStorage.clear();
-        $location.path('login');
-      });
+    .success(function() {
+      $window.localStorage.clear();
+      $location.path('login');
+    });
   };
 });
 
@@ -73,9 +73,11 @@ app.controller("SignUpCtrl", function($scope, $http, $rootScope, $location, $sta
     console.log('Almost there!');
     $http.post('/signup', user)
     .success(function(user) {
-      $rootScope.currentUser = user;
-      $state.go('form.main');
+     $scope.$storage = $localStorage.$default({
+      currentUser: response.username
     });
+     $state.go('form.main');
+   });
   }
 };
 });
@@ -83,14 +85,14 @@ app.controller("SignUpCtrl", function($scope, $http, $rootScope, $location, $sta
 app.controller("LoginCtrl", function($scope,$http,Auth, $rootScope, $state, $localStorage) {
 
   
-$scope.login = function(user) {
+  $scope.login = function(user) {
     $http.post('/login', user)
-      .success(function(response) {
-        $scope.$storage = $localStorage.$default({
-          currentUser: response.username
-        });
-        $state.go('form.main');
+    .success(function(response) {
+      $scope.$storage = $localStorage.$default({
+        currentUser: response.username
       });
+      $state.go('form.main');
+    });
   };
 
 
