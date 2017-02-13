@@ -28,6 +28,8 @@ app.controller("AccountCtrl", function($rootScope, $scope, $http, $location, $st
 });
 
 app.controller("ArtistCtrl", function($rootScope, $scope, $http, $location, $state) {
+
+    // $scope.artist = [{first: "Donte", last: "Burney", rating: 40, location: "Chicago, IL"},]
   
 });
 
