@@ -1,10 +1,8 @@
 // load the things we need
 var mongoose = require('mongoose');
 
-
-
 // define the schema for our user model
-var teamSchema = mongoose.Schema({
+var crewSchema = mongoose.Schema({
   id: Number,
   name: String,
   members: Array,
@@ -14,4 +12,4 @@ var teamSchema = mongoose.Schema({
 
 
 // create the model for users and expose it to our app
-module.exports = mongoose.model('Team', teamSchema);
+module.exports = mongoose.model('Crew', crewSchema);

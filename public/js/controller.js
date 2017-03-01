@@ -41,7 +41,7 @@ app.controller("TeamsCtrl", function($rootScope, $scope, $http, $location, $stat
   
 });
 
-app.controller("TeamProfileCtrl", function($rootScope, $scope, $http, $location, $state) {
+app.controller("CrewProfileCtrl", function($rootScope, $scope, $http, $location, $state) {
   
 });
 
@@ -57,7 +57,42 @@ app.controller("ShowcaseCtrl", function($rootScope, $scope, $http, $location, $s
   
 });
 
-app.controller("BlogCtrl", function($rootScope, $scope, $http, $location, $state) {
+app.controller("BlogCtrl", function($rootScope, $scope, $http, $location, $state, BlogService) {
+  //Query all blog post
+  $scope.blogs = BlogService.query();
+
+  $scope.deleteBlog = function(blog)){
+    blog.$delete(function(blog)){
+      $scope.blogs.splice($scope.blogs.indexOf(blog),1);
+    });
+  };
+
+  //Create A New Blog
+  $scope.createBlog = function(blog)){
+    BlogService.save(blog, function(){
+      $location.path('/');
+    });
+  };
+
+  //Access Single Blog Post
+  BlogService.get({id: $routeParams.id}, function(blog)){
+    $scope.blog = blog;
+  }, function(err){
+    $location.path('/');
+  });
+
+  //Edit A Blog Post
+  $scope.editBlog = function(blog)){
+    console.log("This is working!");
+    $scope.blog.$update(function(){
+      $location.path('/');
+    });
+  };
+
+
+  
+
+
   
 });
 

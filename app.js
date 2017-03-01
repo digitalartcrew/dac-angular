@@ -5,6 +5,9 @@ methodOverride = require('method-override'),
 morgan = require("morgan"),
 path = require("path"),
 session = require('express-session'),
+blogRoutes = require("./routes/blogs"),
+teamRoutes = require("./routes/teams"),
+// https = require(''),
 
 app.use(express.static(__dirname + '/public'));
 

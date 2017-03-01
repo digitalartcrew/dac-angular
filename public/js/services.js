@@ -22,3 +22,11 @@ app.service('Auth', function($state) {
     go: go
   };
 });
+
+app.service("BlogService",['$resource', function($resource){
+  return $resource('/api/user/:userId/blogs/:id', {id: '@_id'}, {
+    update : {
+      method: 'PUT'
+    }
+  });
+}]);
