@@ -6,5 +6,6 @@ mongoose.set("debug", true);
 
 module.exports.User = require("./user");
 module.exports.Employer = require("./employer");
-module.exports.Team = require("./teams");
+module.exports.Team = require("./crews");
+module.exports.Blog = require("./blogs");
 

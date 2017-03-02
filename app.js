@@ -5,9 +5,8 @@ methodOverride = require('method-override'),
 morgan = require("morgan"),
 path = require("path"),
 session = require('express-session'),
-blogRoutes = require("./routes/blogs"),
-teamRoutes = require("./routes/teams"),
-// https = require(''),
+blogRoutes = require("./routes/blog"),
+crewRoutes = require("./routes/crew");
 
 app.use(express.static(__dirname + '/public'));
 
@@ -36,6 +35,9 @@ app.use(bodyParser.urlencoded({
 app.use(morgan("tiny"));
 // use method-override
 app.use(methodOverride('_method'));
+
+app.use('/blogs',blogRoutes);
+app.use('/crews',crewRoutes);
 
 
 //Routes

@@ -1,7 +1,7 @@
-app.controller("NavCtrl", function($rootScope, $scope, $http, $location, $state,$localStorage, Auth, $window) {
+app.controller("NavCtrl", ['$rootScope', '$scope', '$http', '$location', '$state','$localStorage', 'Auth', '$window', function($rootScope, $scope, $http, $location, $state,$localStorage, Auth, $window) {
 
   console.log($localStorage);
-  $scope.currentUser = $localStorage.currentUser;
+  // $scope.currentUser = $localStorage.currentUser;
   $scope.logout = function() {
     $http.post("/logout")
     .success(function() {
@@ -9,7 +9,7 @@ app.controller("NavCtrl", function($rootScope, $scope, $http, $location, $state,
       $location.path('login');
     });
   };
-});
+}]);
 
 
 app.controller("FormCtrl", function($rootScope, $scope, $http, $location, $state, $log) {
@@ -57,32 +57,32 @@ app.controller("ShowcaseCtrl", function($rootScope, $scope, $http, $location, $s
   
 });
 
-app.controller("BlogCtrl", function($rootScope, $scope, $http, $location, $state, BlogService) {
+app.controller("BlogCtrl", ['$rootScope', '$scope', '$http', '$location', '$state', 'BlogService', function($rootScope, $scope, $http, $location, $state, BlogService) {
   //Query all blog post
   $scope.blogs = BlogService.query();
 
-  $scope.deleteBlog = function(blog)){
-    blog.$delete(function(blog)){
+  $scope.deleteBlog = function(blog){
+    blog.$delete(function(blog){
       $scope.blogs.splice($scope.blogs.indexOf(blog),1);
     });
   };
 
   //Create A New Blog
-  $scope.createBlog = function(blog)){
+  $scope.createBlog = function(blog){
     BlogService.save(blog, function(){
       $location.path('/');
     });
   };
 
   //Access Single Blog Post
-  BlogService.get({id: $routeParams.id}, function(blog)){
+  BlogService.get({id: $routeParams.id}, function(blog){
     $scope.blog = blog;
   }, function(err){
     $location.path('/');
   });
 
   //Edit A Blog Post
-  $scope.editBlog = function(blog)){
+  $scope.editBlog = function(blog){
     console.log("This is working!");
     $scope.blog.$update(function(){
       $location.path('/');
@@ -91,10 +91,8 @@ app.controller("BlogCtrl", function($rootScope, $scope, $http, $location, $state
 
 
   
-
-
   
-});
+}]);
 
 app.controller("ProjectsCtrl", function($rootScope, $scope, $http, $location, $state) {
   
@@ -104,7 +102,7 @@ app.controller("ContestCtrl", function($rootScope, $scope, $http, $location, $st
   
 });
 
-app.controller("SignUpCtrl", function($scope, $http, $rootScope, $location, $state) {
+app.controller("SignUpCtrl", ['$scope', '$http', '$rootScope', '$location', '$state', function($scope, $http, $rootScope, $location, $state) {
  $scope.signup = function(user) {
   if (user.password == user.password2) {
     console.log('Almost there!');
@@ -117,9 +115,9 @@ app.controller("SignUpCtrl", function($scope, $http, $rootScope, $location, $sta
    });
   }
 };
-});
+}]);
 
-app.controller("LoginCtrl", function($scope,$http,Auth, $rootScope, $state, $localStorage) {
+app.controller("LoginCtrl", ['$scope','$http','Auth', '$rootScope', '$state', '$localStorage', function($scope,$http,Auth, $rootScope, $state, $localStorage) {
 
   
   $scope.login = function(user) {
@@ -133,6 +131,6 @@ app.controller("LoginCtrl", function($scope,$http,Auth, $rootScope, $state, $loc
   };
 
 
-});
+}]);
 
 
